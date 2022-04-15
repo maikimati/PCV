@@ -6,7 +6,8 @@ import os
 
 def process_image(directory, custom_cmd, imagename,resultname, params="--edge-thresh 10 --peak-thresh 5"):
     """ Process an image and save the results in a file. """
-
+    
+    in_imagename = imagename
     if imagename[-3:] != 'pgm':
         # create a pgm file
         im = Image.open(imagename).convert('L')
@@ -18,8 +19,8 @@ def process_image(directory, custom_cmd, imagename,resultname, params="--edge-th
                 " "+params)
         os.system(cmmd)
     else:
-        print(f'command {custom_cmd.replace(imagename, "tmp.pgm")}')
-        os.system(custom_cmd.replace(imagename, 'tmp.pgm'))
+        print(f'command {custom_cmd.replace(in_imagename, "tmp.pgm")}')
+        os.system(custom_cmd.replace(in_imagename, 'tmp.pgm'))
                 
     print (f'processed {imagename} to {resultname}')
 
