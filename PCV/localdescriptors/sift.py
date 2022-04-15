@@ -18,8 +18,9 @@ def process_image(directory, custom_cmd, imagename,resultname, params="--edge-th
                 " "+params)
         os.system(cmmd)
     else:
-        os.system(custom_cmd)
-        
+        print(f'command {custom_cmd.replace(imagename, "tmp.pgm")}')
+        os.system(custom_cmd.replace(imagename, 'tmp.pgm'))
+                
     print (f'processed {imagename} to {resultname}')
 
 
