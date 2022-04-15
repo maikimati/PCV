@@ -1,4 +1,4 @@
-import matplotlib.delaunay as md 
+from scipy.spatial import Delaunay
 from scipy import ndimage
 from pylab import *
 from numpy import *
@@ -46,7 +46,9 @@ def alpha_for_triangle(points,m,n):
 def triangulate_points(x,y):
     """ Delaunay triangulation of 2D points. """
     
-    centers,edges,tri,neighbors = md.delaunay(x,y)
+    #centers,edges,tri,neighbors = md.delaunay(x,y)
+    tri = Delaunay(np.c_[x,y]).simplices
+
     return tri
 
 
