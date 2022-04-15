@@ -4,7 +4,7 @@ from pylab import *
 import os
 
 
-def process_image(directory, imagename,resultname,params="--edge-thresh 10 --peak-thresh 5"):
+def process_image(directory, custom_cmd, imagename,resultname, params="--edge-thresh 10 --peak-thresh 5"):
     """ Process an image and save the results in a file. """
 
     if imagename[-3:] != 'pgm':
@@ -12,11 +12,14 @@ def process_image(directory, imagename,resultname,params="--edge-thresh 10 --pea
         im = Image.open(imagename).convert('L')
         im.save('tmp.pgm')
         imagename = 'tmp.pgm'
-
-    cmmd = str(directory+imagename+" --output="+resultname+
+    
+    if custom_cmd == '':
+        cmmd = str(directory+imagename+" --output="+resultname+
                 " "+params)
-    print(cmmd)
-    os.system(cmmd)
+        os.system(cmmd)
+    else:
+        os.system(custom_cmd)
+        
     print (f'processed {imagename} to {resultname}')
 
 
