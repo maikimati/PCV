@@ -125,7 +125,7 @@ def panorama(H,fromim,toim,padding=2400,delta=2400):
             fromim_t = ndimage.geometric_transform(fromim,transf,
                                     (toim.shape[0],toim.shape[1]+padding)) 
     else:
-        print 'warp - left'
+        print ('warp - left')
         # add translation to compensate for padding to the left
         H_delta = array([[1,0,0],[0,1,-delta],[0,0,1]])
         H = dot(H,H_delta)
