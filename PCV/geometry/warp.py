@@ -110,7 +110,7 @@ def panorama(H,fromim,toim,padding=2400,delta=2400):
         return (p2[0]/p2[2],p2[1]/p2[2])
     
     if H[1,2]<0: # fromim is to the right
-        print 'warp - right'
+        print ('warp - right')
         # transform fromim
         if is_color:
             # pad the destination image with zeros to the right
